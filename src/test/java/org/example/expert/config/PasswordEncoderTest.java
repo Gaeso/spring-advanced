@@ -20,6 +20,7 @@ class PasswordEncoderTest {
         String encodedPassword = passwordEncoder.encode(rawPassword);
 
         // when
+        // matches 매개변수가 잘못들어가있는걸 수정.
         boolean matches = passwordEncoder.matches(rawPassword, encodedPassword);
 
         // then
