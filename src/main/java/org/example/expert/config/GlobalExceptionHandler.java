@@ -37,7 +37,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> methodArgumentNotValidException(MethodArgumentNotValidException ex) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        return getErrorResponse(status, ex.getMessage());
+        String errorMessage = ex.getFieldError().getDefaultMessage();
+
+        return getErrorResponse(status, errorMessage);
     }
 
     public ResponseEntity<Map<String, Object>> getErrorResponse(HttpStatus status, String message) {
